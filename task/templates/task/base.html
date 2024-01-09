@@ -1,10 +1,42 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'task/css/styles.css' %}">
 </head>
 <body>
-    Саня черт
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Task and Vacation</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+<li class="nav-item" style="margin-right: 10px;"><a href="{% url 'cabinet' %}" class="nav-link active" aria-current="page">{{user.username}}</a></li>
+<li class="nav-item" style="margin-right: 10px;"><a href="{% url 'logout' %}" class="nav-link active" aria-current="page">Выйти</a></li>
+{% else %}
+<li class="nav-item" style="margin-right: 10px;"><a href="{% url 'authentication' %}" class="nav-link active" aria-current="page">Войти</a></li>
+<li class="nav-item" style="margin-right: 10px;"><a href="{% url 'registration' %}" class="nav-link active" aria-current="page">Регистрация</a></li>
+{% endif %}
+        </ul>
+    </div>
+</nav>
+
+<!-- Your content goes here -->
+{% block content %}{% endblock %}
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
