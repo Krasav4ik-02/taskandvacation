@@ -1,13 +1,15 @@
 from django import forms
+from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
+from task.models import *
 
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
-        model = User
-        fields = ['username','password1','password2','email', 'first_name', 'last_name']
+        model = MyUser
+        fields = ['username','password1','password2','email', 'first_name', 'last_name', 'company']
         widgets = {
             'username': forms.TextInput(attrs={
             'class': 'form-control',
@@ -52,3 +54,13 @@ class UserEditForm(UserChangeForm):
         }
     def __init__(self, *args, **kwargs):
         super(UserEditForm, self).__init__(*args, **kwargs)
+
+class CompanyRegistrationForm(UserCreationForm):
+    class Meta:
+        model = Company
+        fields = ['name', 'username', 'first_name', 'last_name', 'password1']
+
+class CompanyAuthenticationForm(AuthenticationForm):
+    class Meta:
+        model = Company
+        fields = ['username', 'password']

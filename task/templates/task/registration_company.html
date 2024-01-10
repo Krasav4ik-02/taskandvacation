@@ -1,0 +1,14 @@
+{% extends 'task/base.html' %}
+
+{% block title %}Employee Registration{% endblock %}
+
+{% block content %}
+<body>
+    <h2>Registration Company</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+</body>
+{% endblock %}

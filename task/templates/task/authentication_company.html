@@ -1,0 +1,21 @@
+{% extends 'task/base.html' %}
+
+{% block title %}Company Auth{% endblock %}
+
+{% block content %}
+<div class="form-container">
+<body>
+    <h2>Authentication Company</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.username.label_tag }} {{ form.username }}
+    {{ form.username.errors }}
+  <br>
+  {{ form.password.label_tag }} {{ form.password }}
+        {{ form.password.errors }}
+  <br>
+  <input type="submit" value="Login">
+</form>
+</body>
+</div>
+{% endblock %}

@@ -32,6 +32,10 @@
     </div>
     <br>
     {{ form.password2.errors }}  <!-- Ошибки для поля 'password2' -->
+    <br>
+    {{ form.company.label_tag }} {{ form.company }}
+    <br>
+    {{form.company.errors}}
     <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
   </form>
 </div>

@@ -10,6 +10,7 @@
   <p><strong>Фамилия:</strong> {{ user.last_name }}</p>
   <p><strong>Имя:</strong> {{ user.first_name }}</p>
   <p><strong>Последнее посещение:</strong> {{ user.last_login }}</p>
+  <p><strong>Идентификатор компаний:</strong> {{ user.company_identificator }}</p>
 </section>
   <a href="{% url 'edit_profile' %}" class="btn btn-primary">Изменить данные</a>
 {% endblock %}
