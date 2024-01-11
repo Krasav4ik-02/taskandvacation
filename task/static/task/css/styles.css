@@ -1,3 +1,9 @@
+body {
+    background-image: url('background.jpg'); /* Замените 'путь_к_изображению.jpg' на путь к вашему фоновому изображению */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 .form-container {
     display: flex;
     flex-direction: column;
