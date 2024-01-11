@@ -100,11 +100,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = [
-    'task.backends.CompanyBackend',
-    'django.contrib.auth.backends.ModelBackend',  # Бэкенд для стандартной модели пользователя
-]
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 

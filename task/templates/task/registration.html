@@ -33,9 +33,18 @@
     <br>
     {{ form.password2.errors }}  <!-- Ошибки для поля 'password2' -->
     <br>
-    {{ form.company.label_tag }} {{ form.company }}
+    {{ form.status.label_tag }} {{ form.status }}
     <br>
-    {{form.company.errors}}
+    {{form.status.errors}}
+    <br>
+    {% if user.status.value == 2 %}
+    {{ form.name_company.label_tag }} {{ form.name_company }}
+    <br>
+    {% else %}
+    {{ form.company_identifier.label_tag }} {{ form.company_identifier }}
+    <br>
+    {{form.company_identifier.errors}}
+    {% endif %}
     <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
   </form>
 </div>

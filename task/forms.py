@@ -9,7 +9,15 @@ from task.models import *
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = MyUser
-        fields = ['username','password1','password2','email', 'first_name', 'last_name', 'company']
+        fields = ['username',
+                  'password1',
+                  'password2',
+                  'email',
+                  'first_name',
+                  'last_name',
+                  'company_identifier',
+                  'status',
+                  'name_company']
         widgets = {
             'username': forms.TextInput(attrs={
             'class': 'form-control',
@@ -54,13 +62,3 @@ class UserEditForm(UserChangeForm):
         }
     def __init__(self, *args, **kwargs):
         super(UserEditForm, self).__init__(*args, **kwargs)
-
-class CompanyRegistrationForm(UserCreationForm):
-    class Meta:
-        model = Company
-        fields = ['name', 'username', 'first_name', 'last_name', 'password1']
-
-class CompanyAuthenticationForm(AuthenticationForm):
-    class Meta:
-        model = Company
-        fields = ['username', 'password']
