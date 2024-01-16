@@ -139,3 +139,19 @@ class UserEditForm(UserChangeForm):
         }
     def __init__(self, *args, **kwargs):
         super(UserEditForm, self).__init__(*args, **kwargs)
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ['name_project', 'description_project', 'start_date', 'end_date']
+
+class TaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['name_task', 'description_task', 'difficulty_level', 'start_date', 'end_date', 'assigned_developer']
+
+    def __init__(self, *args, **kwargs):
+        super(TaskForm, self).__init__(*args, **kwargs)
+        # Добавим виджет для отображения имен, фамилий и логинов разработчиков
+        self.fields['assigned_developer'].queryset = Manager.objects.filter(status=1)
+        self.fields['assigned_developer'].label_from_instance = lambda obj: f"{obj.username} ({obj.first_name} {obj.last_name})"

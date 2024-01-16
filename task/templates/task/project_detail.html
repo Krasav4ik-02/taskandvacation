@@ -1,0 +1,16 @@
+{% extends 'task/base.html' %}
+{% block title %}Project Detail{% endblock %}
+
+{% block content %}
+  <h1>{{ project.name_project }}</h1>
+  <p><strong>Описание:</strong> {{ project.description_project }}</p>
+  <p><strong>Дедлайн:</strong> {{ project.start_date }}-{{ project.end_date }}</p>
+
+  <h2>Задачи в этом проекте:</h2>
+  <ul>
+    {% for task in project.task_set.all %}
+      <li><a href="{% url 'task_detail' task.pk %}">{{ task.name_task }}</a></li>
+    {% endfor %}
+  </ul>
+    <a href="{% url 'create_task' project.id %}" role="button" class="btn btn-primary">Создать задачу</a>
+{% endblock %}

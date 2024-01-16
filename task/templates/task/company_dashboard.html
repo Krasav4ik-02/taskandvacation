@@ -1,0 +1,16 @@
+{% extends 'task/base.html' %}
+{% block title %}Company Dashboard{% endblock %}
+
+{% block content %}
+  <h1>Информационная панель компании</h1>
+  {% if user.status == 2 %}
+    <ul>
+      {% for project in user.project_set.all %}
+        <li><a href="{% url 'project_detail' project.pk %}">{{ project.name_project }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>У вас нет доступа к этой странице.</p>
+  {% endif %}
+  <a class ="btn btn-primary" role="button" href="{% url 'create_project' %}">Создать новый проект</a>
+{% endblock %}

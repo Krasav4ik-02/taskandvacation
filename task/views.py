@@ -1,7 +1,11 @@
+from datetime import datetime
+
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import DetailView
+from django.views.generic.detail import SingleObjectMixin
 
 from task.forms import *
 
@@ -9,6 +13,8 @@ from task.forms import *
 def home(request):
     return render(request, 'task/home.html')
 
+def examplare(request):
+    return render(request, 'task/examplare.html')
 
 def registration(request):
     if request.method == 'POST':
@@ -58,8 +64,12 @@ def authentication(request):
         form = CustomAuthenticationForm(request, request.POST)
         if form.is_valid():
             user = form.get_user()
-            login(request, user)
-            return redirect('/')
+            if user.status == 2:
+                login(request, user)
+                return redirect('company_dashboard')
+            if user.status == 1:
+                login(request, user)
+                return redirect('developer_dashboard')
     else:
         form = CustomAuthenticationForm()
     return render(request, 'task/authentication.html', {'form': form})
@@ -88,5 +98,56 @@ def edit_profile(request):
 
     return render(request, 'task/edit_profile.html', {'form': form})
 
+@login_required
+def create_project(request):
+    if request.user.status == 2:  # Проверка статуса "Company"
+        if request.method == 'POST':
+            form = ProjectForm(request.POST)
+            if form.is_valid():
+                project = form.save(commit=False)
+                project.user = request.user
+                project.save()
+                return redirect('company_dashboard')
+        else:
+            form = ProjectForm()
 
+        return render(request, 'task/create_project.html', {'form': form})
+    else:
+        # Обработка случая, когда пользователь не является компанией
+        return redirect('developer_dashboard')  # Подстройте имя URL для разработчиков
 
+@login_required
+def create_task(request, project_id):
+    project = get_object_or_404(Project, id=project_id, user=request.user)
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.project = project
+            task.save()
+            return redirect('company_dashboard')
+    else:
+        form = TaskForm()
+
+    return render(request, 'task/create_task.html', {'form': form, 'project': project})
+
+@login_required
+def company_dashboard(request):
+    user = request.user
+    projects = Project.objects.filter(user=user)
+    return render(request, 'task/company_dashboard.html', {'projects': projects})
+
+@login_required
+def developer_dashboard(request):
+    tasks = Task.objects.filter(assigned_developer=request.user)
+    return render(request, 'task/developer_dashboard.html', {'tasks': tasks})
+
+@login_required
+def project_detail(request, project_id):
+    project = get_object_or_404(Project, id=project_id, user=request.user)
+    return render(request, 'task/project_detail.html', {'project': project})
+
+@login_required
+def task_detail(request, task_id):
+    task = get_object_or_404(Task, id=task_id, assigned_developer=request.user)
+    return render(request, 'task/task_detail.html', {'task': task})

@@ -1,0 +1,10 @@
+{% extends 'task/base.html' %}
+
+{% block content %}
+  <h2>Создать проект</h2>
+  <form method="post" action="{% url 'create_project' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Создать проект">
+  </form>
+{% endblock %}

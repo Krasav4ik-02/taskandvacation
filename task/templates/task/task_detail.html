@@ -1,0 +1,10 @@
+{% extends 'task/base.html' %}
+{% block title %}Project Detail{% endblock %}
+
+{% block content %}
+  <h1>{{ task.name_task }}</h1>
+  <p><strong>Описание:</strong> {{ task.description_task }}</p>
+  <p><strong>Дедлайн:</strong> {{ task.start_date }}-{{ task.end_date }}</p>
+  <p><strong>Проект:</strong> {{ task.project.name_project }}</p>
+  <p><strong>Уровень сложности:</strong> {% if task.difficulty_level == 1 %}Легкий{% elif task.difficulty_level == 2 %}Средний{% else %}Сложный{% endif %}
+{% endblock %}
