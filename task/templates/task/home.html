@@ -1,14 +1,54 @@
-{% extends 'task/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'task/css/styles.css' %}">
+</head>
+<body>
+<header>
+    <div class="language-selector">
+        <a href="#" class="language-link">RU</a>
+        <a href="#" class="language-link">EN</a>
+    </div>
+    <nav class="main-menu">
+        <a href="#">Возможности</a>
+        <a href="#">Решения</a>
+        <a href="#">Планы</a>
+        <a href="#">Поддержка</a>
+    </nav>
+    <div class="info-icon">
+        <img src="../../static/task/img/info.svg" alt="Info">
+    </div>
+</header>
 
-{% block title %}Главная{% endblock %}
+<div class="auth">
+    <div class="auth_item">
+        <a href="#">
+            <img src="../../static/task/img/Logo.svg" alt="Your Logo" class="logo">
+        </a>
 
-{% block content %}
-<div class="container text-center mt-5">
-    <h1 class="display-4 mb-4">Саня сделай дизайн до завтра<br>
-        Добро пожаловать на нашу платформу!</h1>
-    <p class="lead">
-        Мы рады приветствовать вас здесь, где управление задачами становится простым и отпуск — более запоминающимся.
-        Наши инструменты помогут вам эффективно управлять задачами и планировать свое время.
-    </p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.username.label_tag }} {{ form.username }}
+            {{ form.username.errors }}  <!-- Ошибки для поля 'username' -->
+
+            <div class="form-group">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+            <br>
+            {{ form.password.errors }}
+            <button type="submit">Войти</button>
+        </form>
+    </div>
 </div>
-{% endblock %}
+
+<footer>
+    <p class="footer-text">Готовы повысить эффективность вашей команды? <a href="#" class="register-link">ЗАРЕГИСТРИРУЙТЕСЬ</a>
+    </p>
+</footer>
+
+</body>
+</html>

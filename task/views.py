@@ -72,7 +72,7 @@ def authentication(request):
                 return redirect('developer_dashboard')
     else:
         form = CustomAuthenticationForm()
-    return render(request, 'task/authentication.html', {'form': form})
+    return render(request, 'task/home.html', {'form': form})
 
 def logout_view(request):
     logout(request)

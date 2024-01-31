@@ -1,17 +1,120 @@
-body {
-    background-image: url('background.jpg'); /* Замените 'путь_к_изображению.jpg' на путь к вашему фоновому изображению */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+*,*:before,*:after{
+    box-sizing: border-box;
 }
-.form-container {
+
+
+body {
+    margin: 0;
+    background-image: url('../img/back1.svg');
+}
+header {
+    border-bottom: 1px solid #000;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.language-selector {
+    display: flex;
+}
+
+.language-link {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.main-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-menu a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.info-icon {
+    display: flex;
+    align-items: center;
+}
+
+.info-icon img {
+    width: 30px; /* Размер вашей иконки информации */
+    height: auto;
+}
+.auth {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    margin-top: 70px; /* Уменьшил отступ сверху (вы можете настроить по вашему усмотрению) */
     height: 70vh;
 }
-.container {
+
+.auth_item {
+    width: 20%;
+    height: 300px;
+    margin: 20px;
+    background: #FFD700;
+    border-radius: 50px;
+    border-bottom: 2px solid #000;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    width: 300px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+footer {
     text-align: center;
-    max-width: 600px;
+    padding: 5px;
+    color: white;
+}
+
+.footer-text {
+    display: inline-block;
+    font-size: 20px;
+}
+
+.register-link {
+    color: #E67E22; /* Новый цвет текста ссылки */
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.register-link:hover {
+    text-decoration: underline;
 }

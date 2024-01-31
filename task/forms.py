@@ -149,9 +149,17 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = ['name_task', 'description_task', 'difficulty_level', 'start_date', 'end_date', 'assigned_developer']
+        widgets = {
+            'start_date': forms.DateInput(attrs={
+                'type': 'date',
+            }),
+            'end_date': forms.DateInput(attrs={
+                'type': 'date',
+            }),
+        }
 
     def __init__(self, *args, **kwargs):
         super(TaskForm, self).__init__(*args, **kwargs)
         # Добавим виджет для отображения имен, фамилий и логинов разработчиков
-        self.fields['assigned_developer'].queryset = Manager.objects.filter(status=1)
+        self.fields['assigned_developer'].queryset = Manager.objects.filter(status=1 ,company_identifier='e8bb86b9-bb42-4980-9f18-1610e2d56e5f')
         self.fields['assigned_developer'].label_from_instance = lambda obj: f"{obj.username} ({obj.first_name} {obj.last_name})"
