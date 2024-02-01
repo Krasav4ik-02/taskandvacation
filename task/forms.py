@@ -1,3 +1,5 @@
+from urllib import request
+
 from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
@@ -158,8 +160,7 @@ class TaskForm(forms.ModelForm):
             }),
         }
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, company_identifier=None, **kwargs):
         super(TaskForm, self).__init__(*args, **kwargs)
-        # Добавим виджет для отображения имен, фамилий и логинов разработчиков
-        self.fields['assigned_developer'].queryset = Manager.objects.filter(status=1 ,company_identifier='e8bb86b9-bb42-4980-9f18-1610e2d56e5f')
+        self.fields['assigned_developer'].queryset = Manager.objects.filter(status=1, company_identifier=company_identifier)
         self.fields['assigned_developer'].label_from_instance = lambda obj: f"{obj.username} ({obj.first_name} {obj.last_name})"

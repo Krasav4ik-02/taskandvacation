@@ -3,6 +3,7 @@ from datetime import datetime
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView
 from django.views.generic.detail import SingleObjectMixin
@@ -119,15 +120,16 @@ def create_project(request):
 @login_required
 def create_task(request, project_id):
     project = get_object_or_404(Project, id=project_id, user=request.user)
+    company_identifier = request.user.company_identifier  # Assuming the company identifier is stored in the user object
     if request.method == 'POST':
-        form = TaskForm(request.POST)
+        form = TaskForm(request.POST, company_identifier=company_identifier)
         if form.is_valid():
             task = form.save(commit=False)
             task.project = project
             task.save()
             return redirect('company_dashboard')
     else:
-        form = TaskForm()
+        form = TaskForm(company_identifier=company_identifier)
 
     return render(request, 'task/create_task.html', {'form': form, 'project': project})
 
@@ -149,5 +151,18 @@ def project_detail(request, project_id):
 
 @login_required
 def task_detail(request, task_id):
-    task = get_object_or_404(Task, id=task_id, assigned_developer=request.user)
-    return render(request, 'task/task_detail.html', {'task': task})
+    task = get_object_or_404(Task, id=task_id)
+    user = request.user
+
+    # Проверяем, является ли текущий пользователь разработчиком или компанией
+    if user.status == 1 and task.assigned_developer == user:
+        # Если пользователь - разработчик и это его задача
+        return render(request, 'task/task_detail.html', {'task': task})
+    elif user.status == 2 and task.project.user == user:
+        # Если пользователь - компания и задача связана с ее проектом
+        return render(request, 'task/task_detail.html', {'task': task})
+    else:
+        # В противном случае, если пользователь не имеет доступа, можно
+        # либо показать ошибку, либо перенаправить на другую страницу
+        return HttpResponseForbidden("У вас нет прав для просмотра этой задачи")
+
