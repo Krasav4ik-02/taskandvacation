@@ -1,58 +1,56 @@
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
+    <link rel="stylesheet" href="../../static/task/css/styles2.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}{% endblock %}</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'task/css/styles.css' %}">
 </head>
 <body>
+    <header>
+        <div class="logo">
+            <img src="../../static/task/img/logo1.png   " alt="Your Logo" class="logo">
+        </div>
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'cabinet' %}">Личный кабинет</a></li>
+                    {% if user.status == 1 %}
+                        <li><a href="{% url 'developer_dashboard' %}">Задачи</a></li>
+                    {% elif user.status == 2 %}
+                        <li><a href="{% url 'company_dashboard' %}">Проекты и задачи</a></li>
+                    {% endif %}
+                <li><a href="{% url 'home' %}">Уведомления</a></li>
+                <li><a href="{% url 'logout' %}">Выйти</a></li>
+                {% else %}
+                <li><a href="#possibilities">Возможности</a></li>
+                <li><a href="#solutions">Решения</a></li>
+                <li><a href="#plans">Планы</a></li>
+                <li><a href="#support">Поддержка</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Task and Vacation</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-            {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-bars"></i> Меню
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right rounded-0" aria-labelledby="navbarDropdown">
-                        <!-- Здесь добавьте ссылки на страницы, связанные с проектами -->
-                        <a class="dropdown-item" href="{% url 'cabinet' %}">Личный кабинет</a>
-                        {% if user.status == 1 %}
-                            <a class="dropdown-item" href="{% url 'developer_dashboard' %}">Задачи</a>
-                        {% elif user.status == 2 %}
-                            <a class="dropdown-item" href="{% url 'company_dashboard' %}">Проекты и задачи</a>
-                        {% endif %}
-                        <a class="dropdown-item" href="{% url 'logout' %}">Выйти</a>
-                        <!-- ... -->
-                    </div>
-                </li>
-            {% else %}
-                <li class="nav-item" style="margin-right: 10px;"><a href="{% url 'authentication' %}" class="nav-link active" aria-current="page">Войти</a></li>
-                <li class="nav-item" style="margin-right: 10px;"><a href="{% url 'registration' %}" class="nav-link active" aria-current="page">Регистрация</a></li>
-            {% endif %}
-        </ul>
-    </div>
-</nav>
+    {% block content %}{% endblock %}
 
-<!-- Your content goes here -->
-{% block content %}{% endblock %}
-<!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {% block additional_body %}{% endblock %}
 
+
+    <script>
+        const inputFields = document.querySelectorAll('.input-container input');
+
+        inputFields.forEach(inputField => {
+            inputField.addEventListener('input', function () {
+                const label = this.nextElementSibling; // Select the label
+
+                if (this.value.trim() !== '') {
+                    label.classList.add('hidden');
+                } else {
+                    label.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
