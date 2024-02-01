@@ -118,3 +118,27 @@ footer {
 .register-link:hover {
     text-decoration: underline;
 }
+.status-indicator {
+  margin-top: 10px;
+}
+
+.active {
+  background-color: green;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.warning {
+  background-color: orange;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.expired {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}

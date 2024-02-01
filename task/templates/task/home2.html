@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../static/task/css/styles2.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../../static/task/img/logo1.png   " alt="Your Logo" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#possibilities">Возможности</a></li>
+                <li><a href="#solutions">Решения</a></li>
+                <li><a href="#plans">Планы</a></li>
+                <li><a href="#support">Поддержка</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content">
+        <div class="logo">TaskHUB</div>
+        <p>Ваш надежный партнер в управлении проектами и отдыхом команды разработчиков.</p>
+        <div class="question">Готовы повысить <span class="efficiency">эффективность</span> вашей команды?</div>
+        <button class="register-button">Зарегистрируйтесь</button>
+    </div>
+
+    <div class="login-form">
+        <form action="#" method="post">
+            <div class="input-container">
+                <input type="text" id="username" name="username" required>
+                <label for="username" class="placeholder">Логин</label>
+            </div>
+
+            <div class="input-container">
+                <input type="password" id="password" name="password" required>
+                <label for="password" class="placeholder">Пароль</label>
+            </div>
+
+            <button type="submit" class="login-button">Войти</button>
+        </form>
+    </div>
+
+    <script>
+        const inputFields = document.querySelectorAll('.input-container input');
+
+        inputFields.forEach(inputField => {
+            inputField.addEventListener('input', function () {
+                const label = this.nextElementSibling; // Select the label
+
+                if (this.value.trim() !== '') {
+                    label.classList.add('hidden');
+                } else {
+                    label.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

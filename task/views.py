@@ -7,12 +7,12 @@ from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView
 from django.views.generic.detail import SingleObjectMixin
-
+from datetime import date
 from task.forms import *
 
 
 def home(request):
-    return render(request, 'task/home.html')
+    return render(request, 'task/home2.html')
 
 def examplare(request):
     return render(request, 'task/examplare.html')
@@ -137,7 +137,25 @@ def create_task(request, project_id):
 def company_dashboard(request):
     user = request.user
     projects = Project.objects.filter(user=user)
-    return render(request, 'task/company_dashboard.html', {'projects': projects})
+    today = date.today()
+
+    # Создайте списки для активных, прогарающих и просроченных задач
+    active_tasks = []
+    warning_tasks = []
+    expired_tasks = []
+
+    for project in projects:
+        active_tasks.extend(project.task_set.filter(end_date__gte=today))
+        warning_tasks.extend(project.task_set.filter(end_date__week_day=2))
+        expired_tasks.extend(project.task_set.exclude(end_date__gte=today).exclude(end_date__week_day=2))
+
+    return render(request, 'task/company_dashboard.html', {
+        'projects': projects,
+        'today': today,
+        'active_tasks': active_tasks,
+        'warning_tasks': warning_tasks,
+        'expired_tasks': expired_tasks,
+    })
 
 @login_required
 def developer_dashboard(request):
