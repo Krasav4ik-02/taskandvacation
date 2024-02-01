@@ -6,6 +6,8 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
+    font-family: 'Inter', sans-serif;
+
 
 }
 
@@ -48,28 +50,32 @@ nav ul li a {
 
 
 .content {
-    margin-top: 100px;
+    margin-top: 90px;
     margin-left: 35px;
     max-width: 50%;
 }
 
 .logo {
+    font-weight: bold;
     font-size: 50px;
     color: #ffffff; /* Белый цвет текста */
 }
 
 .content p {
+    font-weight: bold;
     margin-top: 20px;
     font-size: 40px;
     margin-bottom: 50px; /* Уменьшаем вертикальный интервал */
     color: #ffffff; /* Белый цвет текста */
 }
 .question {
+    font-weight: bold;
     color: #ffffff; /* Цвет текста вопроса */
     font-size: 25px;
 }
 
 .register-button {
+    font-weight: bold;
     width: 300px;
     height: 60px;
     background-color: #0057FF; /* Цвет кнопки */
@@ -82,7 +88,7 @@ nav ul li a {
 }
 
 .efficiency {
-    color: #0057FF; /* Цвет только слова "эффективность" */
+    color: #00D1FF; /* Цвет только слова "эффективность" */
 }
 
 .login-form {
