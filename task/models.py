@@ -1,6 +1,8 @@
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 import uuid
 
 class Manager(AbstractUser):
@@ -28,5 +30,26 @@ class Task(models.Model):
     difficulty_level = models.IntegerField(choices=((1, 'Легкий'),(2, 'Средний'), (3, 'Сложный')), default=1)
     start_date = models.DateField()
     end_date = models.DateField()
+
+    def create_notification(self, message):
+        Notification.objects.create(user=self.project.user, message=message)
+
+
+@receiver(post_save, sender=Task)
+def task_created_notification(sender, instance, created, **kwargs):
+    if created:
+        instance.create_notification(f"Создана новая задача: {instance.name_task}")
+    elif instance.assigned_developer:
+        instance.create_notification(f"Задача назначена вам: {instance.name_task}")
+
+
+class Notification(models.Model):
+    user = models.ForeignKey(Manager, on_delete=models.CASCADE)
+    message = models.TextField()
+    is_read = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.message
 
 

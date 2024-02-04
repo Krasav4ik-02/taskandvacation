@@ -20,7 +20,7 @@
                     {% elif user.status == 2 %}
                         <li><a href="{% url 'company_dashboard' %}">Проекты и задачи</a></li>
                     {% endif %}
-                <li><a href="{% url 'home' %}">Уведомления</a></li>
+                <li><a href="{% url 'notifications' %}">Уведомления</a></li>
                 <li><a href="{% url 'logout' %}">Выйти</a></li>
                 {% else %}
                 <li><a href="#possibilities">Возможности</a></li>

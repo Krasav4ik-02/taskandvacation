@@ -10,6 +10,7 @@ from django.views.generic import DetailView
 from django.views.generic.detail import SingleObjectMixin
 from datetime import date
 from task.forms import *
+from .models import Notification
 
 
 def home(request):
@@ -186,3 +187,12 @@ def task_detail(request, task_id):
         # либо показать ошибку, либо перенаправить на другую страницу
         return HttpResponseForbidden("У вас нет прав для просмотра этой задачи")
 
+
+def notifications(request):
+    # Получаем все уведомления, отсортированные по времени добавления
+    notifications = Notification.objects.all().order_by('-timestamp')
+
+    # Помечаем все уведомления как прочитанные (по желанию)
+    # notifications.update(is_read=True)
+
+    return render(request, 'task/notifications.html', {'notifications': notifications})
