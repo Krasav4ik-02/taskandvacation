@@ -1,8 +1,9 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
 from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView
@@ -137,25 +138,26 @@ def create_task(request, project_id):
 def company_dashboard(request):
     user = request.user
     projects = Project.objects.filter(user=user)
-    today = date.today()
 
-    # Создайте списки для активных, прогарающих и просроченных задач
-    active_tasks = []
-    warning_tasks = []
-    expired_tasks = []
+    active_projects = []
+    expiring_projects = []
+    overdue_projects = []
 
     for project in projects:
-        active_tasks.extend(project.task_set.filter(end_date__gte=today))
-        warning_tasks.extend(project.task_set.filter(end_date__week_day=2))
-        expired_tasks.extend(project.task_set.exclude(end_date__gte=today).exclude(end_date__week_day=2))
+        today = date.today()
+        if project.end_date < today:
+            project.status = 'overdue'
+            overdue_projects.append(project)
+        elif (project.end_date - today).days >= 4:
+            project.status = 'active'
+            active_projects.append(project)
+        else:
+            project.status = 'expiring'
+            expiring_projects.append(project)
 
-    return render(request, 'task/company_dashboard.html', {
-        'projects': projects,
-        'today': today,
-        'active_tasks': active_tasks,
-        'warning_tasks': warning_tasks,
-        'expired_tasks': expired_tasks,
-    })
+    return render(request, 'task/company_dashboard.html', {'active_projects': active_projects,
+                                                           'expiring_projects': expiring_projects,
+                                                           'overdue_projects': overdue_projects})
 
 @login_required
 def developer_dashboard(request):
