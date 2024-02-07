@@ -5,39 +5,45 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
+    <style>
+* {
+color: #FFF!important;
+}
+
+    </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="../../static/task/img/logo1.png   " alt="Your Logo" class="logo">
-        </div>
-        <nav>
-            <ul>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'cabinet' %}">Личный кабинет</a></li>
-                    {% if user.status == 1 %}
-                        <li><a href="{% url 'developer_dashboard' %}">Задачи</a></li>
-                    {% elif user.status == 2 %}
-                        <li><a href="{% url 'company_dashboard' %}">Проекты и задачи</a></li>
-                    {% endif %}
-                <li><a href="{% url 'notifications' %}">Уведомления</a></li>
-                <li><a href="{% url 'logout' %}">Выйти</a></li>
-                {% else %}
-                <li><a href="#possibilities">Возможности</a></li>
-                <li><a href="#solutions">Решения</a></li>
-                <li><a href="#plans">Планы</a></li>
-                <li><a href="#support">Поддержка</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
+<header>
+    <div class="logo">
+        <img src="../../static/task/img/logo1.png   " alt="Your Logo" class="logo">
+    </div>
+    <nav>
+        <ul>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'cabinet' %}">Личный кабинет</a></li>
+            {% if user.status == 1 %}
+            <li><a href="{% url 'developer_dashboard' %}">Задачи</a></li>
+            {% elif user.status == 2 %}
+            <li><a href="{% url 'company_dashboard' %}">Проекты и задачи</a></li>
+            {% endif %}
+            <li><a href="{% url 'notifications' %}">Уведомления</a></li>
+            <li><a href="{% url 'logout' %}">Выйти</a></li>
+            {% else %}
+            <li><a href="#possibilities">Возможности</a></li>
+            <li><a href="#solutions">Решения</a></li>
+            <li><a href="#plans">Планы</a></li>
+            <li><a href="#support">Поддержка</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
 
-    {% block content %}{% endblock %}
+{% block content %}{% endblock %}
 
-    {% block additional_body %}{% endblock %}
+{% block additional_body %}{% endblock %}
 
 
-    <script>
+<script>
         const inputFields = document.querySelectorAll('.input-container input');
 
         inputFields.forEach(inputField => {
@@ -51,6 +57,7 @@
                 }
             });
         });
-    </script>
+
+</script>
 </body>
 </html>

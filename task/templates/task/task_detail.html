@@ -7,4 +7,5 @@
   <p><strong>Дедлайн:</strong> {{ task.start_date }}-{{ task.end_date }}</p>
   <p><strong>Проект:</strong> {{ task.project.name_project }}</p>
   <p><strong>Уровень сложности:</strong> {% if task.difficulty_level == 1 %}Легкий{% elif task.difficulty_level == 2 %}Средний{% else %}Сложный{% endif %}
+  <p><strong>Разработчик:</strong>{{ task.assigned_developer.username }}</p>
 {% endblock %}

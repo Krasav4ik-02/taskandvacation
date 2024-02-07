@@ -9,8 +9,23 @@
   <h2>Задачи в этом проекте:</h2>
   <ul>
     {% for task in project.task_set.all %}
-      <li><a href="{% url 'task_detail' task.pk %}">{{ task.name_task }}</a></li>
+      <li>
+        <a href="{% url 'task_detail' task.pk %}">{{ task.name_task }}</a>
+        {% if task.assigned_developer %}
+          (Разработчик: {{ task.assigned_developer.username }})
+        {% endif %}
+      </li>
     {% endfor %}
   </ul>
-    <a href="{% url 'create_task' project.id %}" role="button" class="btn btn-primary">Создать задачу</a>
+
+  <h2>Разработчики в проекте:</h2>
+  <ul>
+    {% for task in project.task_set.all %}
+      {% if task.assigned_developer %}
+        <li>{{ task.assigned_developer.username }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'create_task' project.id %}" role="button" class="btn btn-primary">Создать задачу</a>
 {% endblock %}

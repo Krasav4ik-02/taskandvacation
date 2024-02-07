@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from . import views
 
@@ -19,3 +21,6 @@ urlpatterns = [
     path('task_detail/<int:task_id>/', views.task_detail, name='task_detail'),
     path('notifications/', views.notifications, name='notifications'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

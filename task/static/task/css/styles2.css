@@ -8,7 +8,6 @@ body {
     height: 100vh;
     font-family: 'Inter', sans-serif;
 
-
 }
 
 header {
@@ -150,4 +149,10 @@ nav ul li a {
 }
 .input-container label.hidden {
     display: none;
+}
+.avatar {
+  border-radius: 50%;
+  width: 100px; /* Adjust the size as needed */
+  height: 100px; /* Adjust the size as needed */
+  object-fit: cover;
 }

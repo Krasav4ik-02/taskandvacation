@@ -41,6 +41,7 @@
   </style>
 
   <h1>Информационная панель компании</h1>
+  <a class="btn btn-primary" role="button" href="{% url 'create_project' %}">Создать новый проект</a>
   {% if user.status == 2 %}
     <div class="category-container">
       <div class="col-md-4 mb-4">
@@ -113,5 +114,4 @@
   {% else %}
     <p>У вас нет доступа к этой странице.</p>
   {% endif %}
-  <a class="btn btn-primary" role="button" href="{% url 'create_project' %}">Создать новый проект</a>
 {% endblock %}

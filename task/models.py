@@ -6,6 +6,7 @@ from django.dispatch import receiver
 import uuid
 
 class Manager(AbstractUser):
+    ava_image = models.ImageField(upload_to='avatars/', default='avatars/default_avatar.png')
     name = models.CharField( verbose_name='Название Компании', max_length=255)
     def __str__(self):
         return self.name

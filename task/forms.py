@@ -119,8 +119,8 @@ class UserEditForm(UserChangeForm):
     password = None
 
     class Meta:
-        model = User
-        fields = ('username', 'email', 'first_name', 'last_name')
+        model = Manager
+        fields = ('username', 'email', 'first_name', 'last_name', 'ava_image')
         widgets = {
             'username': forms.TextInput(attrs={
                 'class': 'form-control',
@@ -146,6 +146,14 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ['name_project', 'description_project', 'start_date', 'end_date']
+        widgets = {
+            'start_date': forms.DateInput(attrs={
+                'type': 'date',
+            }),
+            'end_date': forms.DateInput(attrs={
+                'type': 'date',
+            }),
+        }
 
 class TaskForm(forms.ModelForm):
     class Meta:

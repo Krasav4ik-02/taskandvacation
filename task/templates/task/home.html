@@ -42,14 +42,14 @@
                 <strong>Ошибка!</strong> Неверный логин или пароль
             </div>
             {% endif %}
-
             <button type="submit" class="btn btn-primary">Войти</button>
+            <a href="{% url 'registration' %}">Зарегистрироваться</a>
         </form>
     </div>
 </div>
 
 <footer>
-    <p class="footer-text">Готовы повысить эффективность вашей команды? <a href="#" class="register-link">ЗАРЕГИСТРИРУЙТЕСЬ</a>
+    <p class="footer-text">Готовы повысить эффективность вашей команды? <a href="{% url 'registration_manager' %}" class="register-link">ЗАРЕГИСТРИРУЙТЕСЬ</a>
     </p>
 </footer>
 

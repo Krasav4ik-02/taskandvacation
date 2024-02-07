@@ -2,13 +2,114 @@
 {% block title %}Developer Dashboard{% endblock %}
 
 {% block content %}
+  <style>
+    .category-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .category-card {
+      width: 30%;
+    }
+
+    .task-card {
+      width: 100%;
+      max-width: 300px;  /* Ограничение по ширине */
+      margin: 0 auto;    /* Центрирование карточек */
+      margin-bottom: 20px;
+    }
+
+    .status-background {
+      padding: 5px;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .active-bg {
+      background-color: #28a745; /* Зеленый цвет для активных */
+    }
+
+    .expiring-bg {
+      background-color: #ffc107; /* Оранжевый цвет для прогарающих */
+    }
+
+    .overdue-bg {
+      background-color: #dc3545; /* Красный цвет для просроченных */
+    }
+  </style>
+
   <h1>Информационная панель разработчика</h1>
   {% if user.status == 1 %}
-    <ul>
-      {% for task in user.task_set.all %}
-        <li><a href="{% url 'task_detail' task.pk %}">{{ task.name_task }}</a></li>
-      {% endfor %}
-    </ul>
+    <div class="category-container">
+      <div class="col-md-4 mb-4">
+        <div class="card task-card active-bg">
+          <div class="card-body">
+            <h5 class="card-title">Активные</h5>
+            <p class="card-text">Количество: {{ active_tasks|length }}</p>
+          </div>
+        </div>
+        {% for task in active_tasks %}
+          <div class="card task-card active-bg">
+            <div class="card-body">
+              <h5 class="card-title"><a href="{% url 'task_detail' task.id %}">{{ task.name_task }}</a></h5>
+              <p class="card-text">{{ task.description_task }}</p>
+              <p class="card-text">Дата начала: {{ task.start_date }}</p>
+              <p class="card-text">Дата окончания: {{ task.end_date }}</p>
+              <div class="status-background">
+                Активна
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card task-card expiring-bg">
+          <div class="card-body">
+            <h5 class="card-title">Прогарающие</h5>
+            <p class="card-text">Количество: {{ expiring_tasks|length }}</p>
+          </div>
+        </div>
+        {% for task in expiring_tasks %}
+          <div class="card task-card expiring-bg">
+            <div class="card-body">
+              <h5 class="card-title"><a href="{% url 'task_detail' task.id %}">{{ task.name_task }}</a></h5>
+              <p class="card-text">{{ task.description_task }}</p>
+              <p class="card-text">Дата начала: {{ task.start_date }}</p>
+              <p class="card-text">Дата окончания: {{ task.end_date }}</p>
+              <div class="status-background">
+                Прогарающая
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card task-card overdue-bg">
+          <div class="card-body">
+            <h5 class="card-title">Просроченные</h5>
+            <p class="card-text">Количество: {{ overdue_tasks|length }}</p>
+          </div>
+        </div>
+        {% for task in overdue_tasks %}
+          <div class="card task-card overdue-bg">
+            <div class="card-body">
+              <h5 class="card-title"><a href="{% url 'task_detail' task.id %}">{{ task.name_task }}</a></h5>
+              <p class="card-text">{{ task.description_task }}</p>
+              <p class="card-text">Дата начала: {{ task.start_date }}</p>
+              <p class="card-text">Дата окончания: {{ task.end_date }}</p>
+              <div class="status-background">
+                Просрочена
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
   {% else %}
     <p>У вас нет доступа к этой странице.</p>
   {% endif %}

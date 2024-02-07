@@ -91,7 +91,7 @@ def edit_profile(request):
     user = request.user
 
     if request.method == 'POST':
-        form = UserEditForm(request.POST, instance=user)
+        form = UserEditForm(request.POST,request.FILES, instance=user)
         if form.is_valid():
             form.save()
             return redirect('cabinet')
@@ -162,9 +162,29 @@ def company_dashboard(request):
 
 @login_required
 def developer_dashboard(request):
-    tasks = Task.objects.filter(assigned_developer=request.user)
-    return render(request, 'task/developer_dashboard.html', {'tasks': tasks})
+    user = request.user
+    tasks = Task.objects.filter(assigned_developer=user)
 
+    active_tasks = []
+    expiring_tasks = []
+    overdue_tasks = []
+
+    today = date.today()
+
+    for task in tasks:
+        if task.end_date < today:
+            task.status = 'overdue'
+            overdue_tasks.append(task)
+        elif (task.end_date - today).days >= 4:
+            task.status = 'active'
+            active_tasks.append(task)
+        else:
+            task.status = 'expiring'
+            expiring_tasks.append(task)
+
+    return render(request, 'task/developer_dashboard.html', {'active_tasks': active_tasks,
+                                                             'expiring_tasks': expiring_tasks,
+                                                             'overdue_tasks': overdue_tasks})
 @login_required
 def project_detail(request, project_id):
     project = get_object_or_404(Project, id=project_id, user=request.user)
