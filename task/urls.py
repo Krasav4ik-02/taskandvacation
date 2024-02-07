@@ -20,6 +20,8 @@ urlpatterns = [
     path('project_detail/<int:project_id>/', views.project_detail, name='project_detail'),
     path('task_detail/<int:task_id>/', views.task_detail, name='task_detail'),
     path('notifications/', views.notifications, name='notifications'),
+    path('send_completed_task/<int:task_id>/', views.send_completed_task, name='send_completed_task'),
+    path('view_completed_tasks/', views.view_completed_tasks, name='view_completed_tasks'),
 ]
 
 if settings.DEBUG:

@@ -208,11 +208,37 @@ def task_detail(request, task_id):
         return HttpResponseForbidden("У вас нет прав для просмотра этой задачи")
 
 
+@login_required
 def notifications(request):
-    # Получаем все уведомления, отсортированные по времени добавления
-    notifications = Notification.objects.all().order_by('-timestamp')
+    # Получаем все уведомления для текущего пользователя
+    user_notifications = Notification.objects.filter(user=request.user).order_by('-timestamp')
 
-    # Помечаем все уведомления как прочитанные (по желанию)
-    # notifications.update(is_read=True)
+    # Если у вас есть дополнительные логики для фильтрации уведомлений (например, показывать только непрочитанные),
+    # добавьте соответствующую логику здесь.
 
-    return render(request, 'task/notifications.html', {'notifications': notifications})
+    # Помечаем уведомления как прочитанные (по желанию)
+    user_notifications.update(is_read=True)
+
+    return render(request, 'task/notifications.html', {'notifications': user_notifications})
+
+@login_required
+def send_completed_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id)
+
+    if request.method == 'POST':
+        form = CompletedTaskForm(request.POST, request.FILES)
+        if form.is_valid():
+            completed_task = form.save(commit=False)
+            completed_task.task = task
+            completed_task.sender = request.user
+            completed_task.save()
+            return redirect('developer_dashboard')
+    else:
+        form = CompletedTaskForm()
+
+    return render(request, 'task/send_completed_task.html', {'form': form, 'task': task})
+
+@login_required
+def view_completed_tasks(request):
+    completed_tasks = CompletedTask.objects.filter(task__project__user=request.user)
+    return render(request, 'task/view_completed_tasks.html', {'completed_tasks': completed_tasks})

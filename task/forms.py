@@ -172,3 +172,8 @@ class TaskForm(forms.ModelForm):
         super(TaskForm, self).__init__(*args, **kwargs)
         self.fields['assigned_developer'].queryset = Manager.objects.filter(status=1, company_identifier=company_identifier)
         self.fields['assigned_developer'].label_from_instance = lambda obj: f"{obj.username} ({obj.first_name} {obj.last_name})"
+
+class CompletedTaskForm(forms.ModelForm):
+    class Meta:
+        model = CompletedTask
+        fields = ['text', 'file']

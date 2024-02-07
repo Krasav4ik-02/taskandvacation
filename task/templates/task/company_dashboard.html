@@ -41,6 +41,8 @@
   </style>
 
   <h1>Информационная панель компании</h1>
+<a href="{% url 'view_completed_tasks' %}" class="btn btn-secondary">Просмотр выполненных задач</a>
+<br>
   <a class="btn btn-primary" role="button" href="{% url 'create_project' %}">Создать новый проект</a>
   {% if user.status == 2 %}
     <div class="category-container">

@@ -1,0 +1,15 @@
+{% extends 'task/base.html' %}
+{% block title %}Просмотр выполненных задач{% endblock %}
+{% block content %}
+  <h2>Просмотр выполненных задач</h2>
+  {% for completed_task in completed_tasks %}
+    <div>
+      <p>{{ completed_task }}</p>  <!-- Проверьте это место -->
+      <p>Текст: {{ completed_task.text }}</p>
+      {% if completed_task.file %}
+        <p>Файл: <a href="{{ completed_task.file.url }}">{{ completed_task.file.name }}</a></p>
+      {% endif %}
+      <p>Дата и время отправки: {{ completed_task.timestamp }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}
