@@ -36,7 +36,7 @@ def registration(request):
                     messages.error(request, 'Нет похожих компаний. Напишите правильный идентификатор.')
                     return render(request, 'task/registration.html', {'form': form})
             login(request, developer)
-            return redirect('/')
+            return redirect('developer_dashboard')
         else:
             print("Form is not valid. Errors:", form.errors)
     else:
@@ -54,7 +54,7 @@ def registration_manager(request):
             manager.save()
             login(request, manager)
             print("Manager saved successfully.")
-            return redirect('/')
+            return redirect('company_dashboard')
         else:
             print("Form is not valid. Errors:", form.errors)
     else:
@@ -75,7 +75,7 @@ def authentication(request):
                 return redirect('developer_dashboard')
     else:
         form = CustomAuthenticationForm()
-    return render(request, 'task/home.html', {'form': form})
+    return render(request, 'task/authentication.html', {'form': form})
 
 def logout_view(request):
     logout(request)

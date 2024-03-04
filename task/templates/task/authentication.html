@@ -1,30 +1,47 @@
-{% extends 'task/base.html' %}
-
-{% block title %}Авторизация{% endblock %}
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пример верстки</title>
+    <link rel="stylesheet" href="../../static/task/css/styles3.css">
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <span>Узнать больше о нашем приложении ⟶</span>
+        <a href="#" class="highlighted-text">ВОЗМОЖНОСТИ</a>
+    </div>
+</header>
 <div class="form-container">
-  <h2>Авторизация</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.username.label_tag }} {{ form.username }}
-    <br>
-    {{ form.username.errors }}  <!-- Ошибки для поля 'username' -->
-
-    <div class="form-group">
-    {{ form.password.label_tag }}
-    {{ form.password }}
+    <div class="custom2-image">
+        <img src="../../static/task/img/111.png" alt="Картинка слева">
     </div>
-    <br>
-    {{ form.password.errors }}
+        <div class="logo">
+            <img src="../../static/task/img/Logo.svg" alt="Логотип">
+        </div>
+        <div class="spacer"></div>
+        <h3>Авторизация</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="username">Имя пользователя</label>
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+            <div class="input-group">
+                <label for="password">Пароль</label>
+                {{ form.password }}
+                {{ form.password.errors }}
+            </div>
+            <button type="submit">Войти</button>
+        </form>
 
-    {% if form.errors %}
-    <div class="alert alert-danger">
-      <strong>Ошибка!</strong> Неверный логин или пароль
-    </div>
-    {% endif %}
-
-    <button type="submit" class="btn btn-primary">Войти</button>
-  </form>
-</div>
-{% endblock %}
+        <div class="register-link">
+            <span>Нет аккаунта?</span>
+            <a href="{% url 'registration' %}">Создать аккаунт</a>
+        </div>
+        <div class="custom-image">
+            <img src="../../static/task/img/123123.png" alt="Картинка справа">
+        </div>
+</body>
+</html>

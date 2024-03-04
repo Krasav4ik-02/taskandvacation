@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Webpage</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      align-items: flex-start;
+      height: 100vh;
+      background-color: #232333;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    .section1 {
+      background-color: #2B2C40;
+      width: 250px;
+      height: 800px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      position: relative;
+      margin-right: 13px; /* Отступ между блоками */
+    }
+
+    .section1 img {
+      width: 240px;
+      height: 45px;
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .button {
+      position: absolute;
+      top: calc(50% + 50px);
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      background-color: #2B2C40;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+    }
+
+    .button img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .button span {
+      font-size: 20px;
+      font-weight: bold;
+      color: #A3A4CC;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .button-content {
+      display: flex;
+      align-items: center;
+    }
+
+    .button-content img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .section2 {
+      margin-top: 11px;
+      background-color: #2B2C40;
+      width: 1200px;
+      height: 60px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .section2 img {
+      width: 20px;
+      height: 20px;
+      margin-left: 20px;
+    }
+
+    .section2 p {
+      margin-left: 10px;
+      font-size: 24px;
+      color: #A3A4CC;
+    }
+
+    .section2 .icons {
+      margin-left: auto;
+      display: flex;
+    }
+
+    .section2 .icons img {
+      width: 25px;
+      height: 25px;
+      margin-right: 20px;
+      border-radius: 50%
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="section1">
+      <img src="../../static/task/img/logo2.png" alt="Your Image">
+      <button class="button">
+        <div class="button-content">
+          <img src="../../static/task/img/projects.png" alt="Icon">
+          <span>Проекты</span>
+        </div>
+        <img src="../../static/task/img/arrow.png" alt="Another Icon">
+      </button>
+    </div>
+
+    <div class="section2">
+      <img src="../../static/task/img/search.png" alt="Search Icon">
+      <p>Поиск</p>
+      <div class="icons">
+        <img src="../../static/task/img/notification.png" alt="First Icon">
+        <img src="../../static/task/img/avatar.jpg" alt="Second Icon">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

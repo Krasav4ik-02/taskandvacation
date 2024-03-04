@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #333A4D; /* Задаем цвет фона всей страницы */
+}
+
+header {
+    background-color: #EFF3F8;
+    height: 40px;
+    width: 100%;
+}
+
+.header-content {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+}
+
+.header-content span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
+
+.highlighted-text {
+    color: #0F75EC;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.highlighted-text:hover {
+    text-decoration: underline;
+}
+
+.form-container {
+    margin: 100px auto 0;
+    width: 300px;
+    text-align: center;
+    background-color: #fff; /* Задаем белый цвет фона формы */
+    padding: 20px; /* Добавляем небольшие внутренние отступы */
+    border-radius: 8px; /* Закругляем углы формы */
+}
+
+
+.logo img {
+    width: 250px;
+    height: 70px;
+}
+
+.spacer {
+    margin-top: 5px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left; /* Выравниваем текст внутри input-group по левому краю */
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: calc(100% - 16px); /* Учитываем внутренний отступ в 8px с каждой стороны */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0F75EC;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #095ca6;
+}
+
+.register-link {
+    margin-top: 20px;
+}
+
+.register-link a {
+    color: #0F75EC;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+.custom-image {
+    position: absolute;
+    top: 75px;
+    left: 5px;
+    width: 498px;
+    height: 391px;
+    overflow: hidden; /* Обрезаем изображение, если оно больше размеров div */
+}
+
+.custom-image img {
+    width: 100%;
+    height: auto;
+}
+.custom2-image {
+    position: absolute;
+    top: 100px;
+    left: 900px;
+    width: 580px;
+    height: 475px;
+    overflow: hidden; /* Обрезаем изображение, если оно больше размеров div */
+}
+
+.custom2-image img {
+    width: 100%;
+    height: auto;
+}
+

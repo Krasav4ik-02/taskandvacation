@@ -1,55 +1,180 @@
-{% extends 'task/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333A4D;
+            position: relative;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 400px;
+            height: 640px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .logo {
+            text-align: center;
+        }
 
-{% block title %}Регистрация Компаний{% endblock %}
+        .logo img {
+            width: 250px;
+            height: 70px;
+        }
+        .logo a {
+            color: #0F75EC;
+            text-decoration: none;
+        }
+        .logo a:hover {
+            text-decoration: underline;
+        }
 
-{% block content %}
-<div class="form-container">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <h2>Регистрация Компаний</h2>
+        .registration-text {
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            font-weight: bold;
+            font-size: 25px;
+            color: #000000;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+
+        .form-field label {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .input-field {
+            width: 350px;
+            height: 30px;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            padding: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .submit-button {
+            width: 350px;
+            height: 35px;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            background-color: #0057FF;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .custom-image {
+            position: absolute;
+            top: 75px;
+            left: -520px;
+            width: 498px;
+            height: 391px;
+            overflow: hidden; /* Обрезаем изображение, если оно больше размеров div */
+        }
+
+        .custom-image img {
+            width: 100%;
+            height: auto;
+        }
+        .custom2-image {
+            position: absolute;
+            top: 100px;
+            left: 450px;
+            width: 580px;
+            height: 475px;
+            overflow: hidden; /* Обрезаем изображение, если оно больше размеров div */
+        }
+
+        .custom2-image img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
   <form method="post">
     {% if form.errors %}
-  <div class="alert alert-danger" role="alert">
-    <strong>Ошибки:</strong>
-    <ul>
-      {% for field, errors in form.errors.items %}
+    <div class="alert alert-danger" role="alert">
+      <strong>Ошибки:</strong>
+      <ul>
+        {% for field, errors in form.errors.items %}
         {% for error in errors %}
-          <li>{{ field }}: {{ error }}</li>
+        <li>{{ field }}: {{ error }}</li>
         {% endfor %}
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+      {% if messages %}
+    <div class="alert alert-danger" role="alert">
+      {% for message in messages %}
+        {{ message }}
       {% endfor %}
-    </ul>
-  </div>
-{% endif %}
+    </div>
+  {% endif %}
     {% csrf_token %}
-
-    {{ form.username.label_tag }} {{ form.username }}
-    <br>
-    {{ form.username.errors }}  <!-- Ошибки для поля 'username' -->
-
-    {{ form.first_name.label_tag }} {{ form.first_name }}
-    <br>
-    {{ form.first_name.errors }}
-
-    {{ form.last_name.label_tag }} {{ form.last_name }}
-    <br>
-    {{form.last_name.errors}}
-
-    <div class="form-group">
-    {{ form.password1.label_tag }}
-    <input type="password" name="{{ form.password1.name }}" class="form-control" style="width: 200px">
+    <div class="stars"></div>
+    <div class="container">
+        <div class="custom2-image">
+            <img src="../../static/task/img/111.png" alt="Картинка слева">
+        </div>
+        <div class="logo">
+            <img src="../../static/task/img/Logo.svg" alt="Logo">
+        </div>
+        <div class="registration-text">Регистрация компаний</div>
+        <div class="form-field">
+            <label for="username">Имя пользователя</label>
+            <input type="text" name="{{ form.username.name }}" class="input-field">
+        </div>
+        <div class="form-field">
+            <label for="firstName">Имя</label>
+            <input type="text" name="{{ form.first_name.name }}" class="input-field">
+        </div>
+        <div class="form-field">
+            <label for="lastName">Фамилия</label>
+            <input type="text" name="{{ form.last_name.name }}" class="input-field">
+        </div>
+        <div class="form-field">
+            <label for="password">Пароль</label>
+            <input type="password" name="{{ form.password1.name }}" class="input-field">
+        </div>
+        <div class="form-field">
+            <label for="confirmPassword">Подтверждение пароля</label>
+            <input type="password" name="{{ form.password2.name }}" class="input-field">
+        </div>
+        {{ form.status }}{{ form.status.errors }}
+        {{ form.company_identifier.errors }}
+        <div class="form-field">
+            <label for="companyId">Название компании</label>
+            <input type="text" name="{{ form.name.name }}" class="input-field">
+        </div>
+        <button class="submit-button">Зарегистрироваться</button>
+        <div class="logo">
+            <span>Уже есть аккаунт?</span>
+            <a href="{% url 'authentication' %}">Войти</a>
+        </div>
+        <div class="custom-image">
+            <img src="../../static/task/img/123123.png" alt="Картинка справа">
+        </div>
     </div>
-    <br>
-
-    <div class="form-group">
-    {{ form.password2.label_tag }}
-    <input type="password" name="{{ form.password2.name }}" class="form-control" style="width: 200px">
-    </div>
-    <br>
-    {{ form.status }}{{ form.status.errors }}
-    {{ form.company_identifier.errors }}
-    {{ form.password2.errors }}  <!-- Ошибки для поля 'password2' -->
-    {{ form.name.label_tag }}<br>{{ form.name }}
-    <br><br>
-    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
   </form>
-</div>
-{% endblock %}
+</body>
+</html>

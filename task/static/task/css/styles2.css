@@ -1,10 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('../img/back1.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #333A4D;
     height: 100vh;
     font-family: 'Inter', sans-serif;
 
@@ -12,6 +9,7 @@ body {
 
 header {
     height: 60px;
+    background-color: #EFF3F8;
     border-bottom: 1px solid #ccc; /* Сплошная белая линия снизу */
     display: flex;
     justify-content: space-between;
@@ -43,8 +41,9 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #ffffff;
+    color: black;
     letter-spacing: 2px; /* Увеличивает интервал между символами */
+    font-weight: bold;
 }
 
 

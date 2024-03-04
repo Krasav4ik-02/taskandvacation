@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #232333;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .left-section {
+            background-color: #2B2C40;
+            width: 320px;
+            height: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .logo {
+            width: 323px;
+            height: 67px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .projects {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .projects img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .projects a {
+            text-decoration: none;
+            color: #A3A4CC;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .right-section {
+            margin-left: 13px;
+        }
+
+        .right-rectangle {
+            background-color: #2B2C40;
+            width: 850px;
+            height: 80px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+        }
+
+        .search img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .search-text {
+            color: #A3A4CC;
+            font-size: 32px;
+            font-weight: regular;
+        }
+
+        .right-icons {
+            display: flex;
+            justify-content: flex-end;
+            margin-left: auto;
+        }
+
+        .right-icons img {
+            margin-left: 24px;
+        }
+
+        .circle-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+
+        .large-circle-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <img class="logo" src="path/to/your/logo.png" alt="Logo">
+            <div class="projects">
+                <a href="#">
+                    <img src="path/to/your/projects_icon.png" alt="Projects">
+                    Проекты
+                </a>
+                <img src="path/to/your/second_icon.png" alt="Second Icon">
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="right-rectangle">
+                <div class="search">
+                    <img src="path/to/your/search_icon.png" alt="Search Icon">
+                    <div class="search-text">Поиск</div>
+                </div>
+                <div class="right-icons">
+                    <img class="circle-icon" src="path/to/your/circle_icon.png" alt="Circle Icon">
+                    <img class="large-circle-icon" src="path/to/your/large_circle_icon.png" alt="Large Circle Icon">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

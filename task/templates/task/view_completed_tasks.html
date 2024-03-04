@@ -1,6 +1,11 @@
 {% extends 'task/base.html' %}
 {% block title %}Просмотр выполненных задач{% endblock %}
 {% block content %}
+<style>
+  .line {
+    border-bottom: 1px solid #ccc;
+  }
+</style>
   <h2>Просмотр выполненных задач</h2>
   {% for completed_task in completed_tasks %}
     <div>
@@ -11,5 +16,6 @@
       {% endif %}
       <p>Дата и время отправки: {{ completed_task.timestamp }}</p>
     </div>
+<div class="line"></div>
   {% endfor %}
 {% endblock %}
