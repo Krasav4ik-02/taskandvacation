@@ -42,40 +42,39 @@
 
     .button {
       position: absolute;
-      top: calc(50% + 50px);
+      top: 80px;
       left: 50%;
       transform: translateX(-50%);
-      padding: 10px;
-      border: none;
-      cursor: pointer;
-      background-color: #2B2C40;
       border-radius: 5px;
+      background-color: #696CFF;
       display: flex;
       align-items: center;
+      cursor: pointer;
+      width: 240px;
+      border: none;
     }
 
     .button img {
-      width: 30px;
-      height: 30px;
-      margin-right: 10px;
+      width: 20px;
+      height: 20px;
+      position: relative;
+    }
+
+    .button img:first-child {
+      left: 10px; /* Отступ слева для первой картинки */
+      top: 12px;
+    }
+
+    .button img:last-child {
+      top:12px;
+      margin-left: auto; /* Отступ справа для второй картинки */
     }
 
     .button span {
       font-size: 20px;
       font-weight: bold;
-      color: #A3A4CC;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-
-    .button-content {
-      display: flex;
-      align-items: center;
-    }
-
-    .button-content img {
-      width: 30px;
-      height: 30px;
-      margin-right: 10px;
+      color: white;
+      margin: 0 auto; /* Центрирование текста */
     }
 
     .section2 {
@@ -110,6 +109,7 @@
       width: 25px;
       height: 25px;
       margin-right: 20px;
+      margin-left: -5px;
       border-radius: 50%
     }
   </style>
@@ -119,11 +119,18 @@
     <div class="section1">
       <img src="../../static/task/img/logo2.png" alt="Your Image">
       <button class="button">
-        <div class="button-content">
+        <div class="img">
           <img src="../../static/task/img/projects.png" alt="Icon">
           <span>Проекты</span>
+          <img src="../../static/task/img/arrow.png" alt="Another Icon">
         </div>
-        <img src="../../static/task/img/arrow.png" alt="Another Icon">
+      </button>
+      <button class="button" style="margin-top: 30px;">
+        <div class="img">
+          <img src="../../static/task/img/projects.png" alt="Icon">
+          <span>Задачи</span>
+          <img src="../../static/task/img/arrow.png" alt="Another Icon">
+        </div>
       </button>
     </div>
 
