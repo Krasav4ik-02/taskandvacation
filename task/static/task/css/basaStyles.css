@@ -1,0 +1,188 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+}
+
+.container {
+  background-color: #232333;
+  display: flex;
+  height: 100%;
+}
+
+.menu {
+  width: 4%;
+  background-color: #2B2C40;
+  color: #fff;
+  transition: width 0.5s;
+  overflow: hidden;
+  height: 100%;
+}
+
+.menu.expanded {
+  width: 16%;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  height: 50px;
+}
+
+button img {
+  margin-top: 10px; /* Добавляем отступ 2 пикселя сверху */
+}
+
+button:focus {
+  outline: none;
+}
+
+nav {
+  padding: 20px;
+}
+
+/* Стили для списка */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px; /* Отступ сверху для раздела иконок */
+}
+
+nav ul li {
+  display: flex; /* Располагаем иконки и текст рядом */
+  align-items: center; /* Выравниваем элементы по вертикали */
+  margin-bottom: 20px; /* Отступ между иконками */
+}
+
+nav ul li img {
+  margin-right: 10px; /* Отступ между иконкой и текстом */
+  width: 24px; /* Устанавливаем ширину иконки */
+  height: 24px; /* Устанавливаем высоту иконки */
+}
+
+/* Стили для текстовых меток */
+nav ul li .label {
+  color:#A3A4CC; /* Цвет текста */
+  font-size: 16px; /* Размер шрифта */
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  align-items: center; /* Выравнивание по вертикали */
+  justify-content: center; /* Центрирование по горизонтали */
+  background-color: #2B2C40;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  position: relative;
+}
+
+.search-icon {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  left: 10px;
+}
+.search-text {
+  position: absolute;
+  left: 50px;
+  color: #A3A4CC;
+  font-size: 30px;  /* Увеличиваем размер шрифта */
+  transition: opacity 0.3s ease;
+}
+.search-input {
+  padding-left: 55px;
+  border: none;
+  background-color: transparent;
+  color: #A3A4CC;
+  outline: none;
+  font-size: 25px;
+  width: 100%
+}
+
+
+.notification-icons {
+  display: flex;
+  align-items: center;
+  margin-top: -20px;
+}
+.notification-icons button img {
+  width: 35px;
+  height: 35px;
+}
+
+
+.notification-icons button {
+  background: none;
+  border: none;
+}
+
+
+
+.notification-icons img {
+  margin-left: 0px;
+  margin-right: 0px;
+  top: 20px;
+}
+
+.notification-icons img:last-child {
+  border-radius: 50%; /* Делаем последнюю иконку круглой */
+}
+
+/* Стили для модального окна */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
