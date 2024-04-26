@@ -1,0 +1,49 @@
+.Project {
+    margin: 20px;
+    padding: 30px 10px;
+    background: var(--bg-color-second);
+    color: #696CFF;
+    border: 1px solid var(--bg-color-second);
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    position: relative;
+    // z-index: 1;
+}
+
+.btn {
+    position: absolute;
+    bottom: 20px;
+    background: #373966;
+    padding: 5px 15px;
+    width: 120px;
+    text-align: center;
+    border-radius: 20px;
+    color: #676AFA;
+    border: 1px solid #373966;
+    left: 31%;
+}
+
+.task_body{
+    margin-top: 50px;
+    height: 150px;
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.time {
+    margin-top: 5px;
+    background: var(--bg-color-first);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    display: flex;
+    left: 41%;
+    font-size: 0.8rem;
+    justify-content: center;
+    align-items: center;
+}

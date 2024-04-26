@@ -1,0 +1,140 @@
+.Task {
+    background: var(--bg-color-first);
+    // width: calc(100vw - 300px);
+    width: 100%;
+    max-width: calc(100vw);
+    height: auto;
+    // color: #A3A4CC;
+
+
+}
+
+
+
+.task_container {
+    // border: 1px solid #ccc;
+    // border-radius: 5px;
+    padding: 30px;
+    margin-bottom: 20px;
+    
+    & textarea {
+      background: var(--bg-color-second);
+      color: #c0c1e0;
+      padding: 5px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--bg-color-second);
+    }
+}
+
+.project_container {
+  padding: 20px;
+  // margin-bottom: 20px;
+  display: flex;
+
+  & input {
+    background: var(--bg-color-second);
+    color: #c0c1e0;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--bg-color-second);
+  }
+}
+  
+.textarea {
+  background: var(--bg-color-second);
+  color: #c0c1e0;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--bg-color-second);
+}
+
+  .task_container p {
+    margin: 10px 0;
+  }
+
+  .task_container input  {
+    background: var(--bg-color-second);
+    // font-size: 1.4rem;
+    color: #c0c1e0;
+    padding: 5px 10px;
+    // width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--bg-color-second);
+  }
+  
+  .task_container p strong {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+.btn {
+    // position: absolute;
+  margin: 10px;
+  bottom: 20px;
+  background: #373966;
+  padding: 5px 15px;
+  width: 120px;
+  text-align: center;
+  border-radius: 20px;
+  color: #676AFA;
+  border: 1px solid #373966;
+  left: 35%;
+}
+
+.btn_light {
+  color: #696CFF;
+  background: #e7e7ff;
+  margin: 10px;
+  bottom: 20px;
+  padding: 5px 15px;
+  width: 120px;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid #e7e7ff;
+  left: 35%;
+}
+
+.btn_delete {
+  margin: 10px;
+  // position: absolute;
+  bottom: 20px;
+  background: #663737;
+  padding: 5px 15px;
+  width: 120px;
+  text-align: center;
+  border-radius: 20px;
+  color: #fa6767;
+  border: 1px solid #373966;
+  left: 35%;
+}
+
+.btn_delete_light {
+  margin: 10px;
+  // position: absolute;
+  bottom: 20px;
+  background: #f3727288;
+  padding: 5px 15px;
+  width: 120px;
+  text-align: center;
+  border-radius: 20px;
+  color: #fa6767;
+  border: 1px solid #f3727288;
+  left: 35%;
+}
+
+// .modal {
+
+// }
+
+// table {
+  // padding: 0;
+  // margin: 0;
+  // & tr {
+    // width: 100px;
+    
+  // }
+
+  // & td {
+    // padding: 5px;
+  // }
+// }

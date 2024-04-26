@@ -1,0 +1,52 @@
+.Navbar {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    max-height: 80px;
+    position: static;
+    font-size: 1.4rem;
+    // width: calc(100vw - 300px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+
+    & input {
+        background: var(--bg-color-second);
+        font-size: 1.4rem;
+        color: #c0c1e0;
+        padding: 5px 10px;
+        width: 90%;
+        max-width: 800px;
+        border-radius: 10px;
+        border: 1px solid var(--bg-color-second);
+        // height: 70px;
+    }
+
+    
+}
+
+.profile {
+    margin-left: 30px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #A3A4CC;
+    padding: 1px;
+    box-shadow: 0px 0px 10px #A3A4CC;
+}
+
+.notice {
+    margin-left: 30px;
+    max-width: 45px;
+    max-height: 45px;
+    border-radius: 50%;
+
+}
+
+.exit {
+    cursor: pointer;
+    max-width: 35px;
+    max-height: 35px;
+    margin-left: 20px;
+}

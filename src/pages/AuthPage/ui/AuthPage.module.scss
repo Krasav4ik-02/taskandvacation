@@ -1,0 +1,93 @@
+.AuthPage {
+    min-height: 100vh;
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background: #232333;
+    color: #fff;
+}
+
+.authForm {
+    height: auto;
+    width: 90%;
+    max-width: 400px;
+    background-color: #2b2b3f;
+    border: 1px solid #2b2b3f;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 50px 1px;
+    box-shadow: 0px 0px 5px #2b2b3f;
+    position: static;
+    z-index: 1;
+    & h1 {
+        margin-top: 100px;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    & h4 {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    & img {
+        max-width: 300px;
+        max-height: 65px;
+        // position: absolute;
+        // z-index: 1000;
+
+    }
+
+    & p {
+        text-align: center;
+    }
+}
+
+
+
+.inputBox input{
+    border: 2px solid #eee;
+    padding: 5px 10px;
+    margin: 10px 0px;
+    border-radius: 7px;
+    width: 100%;
+}
+
+
+.btn {
+    margin-top: 50px;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background: rgb(123, 123, 255);
+    border: 1px solid #232333;
+    color: #fff;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+// .icons {
+//     // position: absolute;
+//     // margin: 3000px;
+//     & img {
+//         max-height: 100px;
+//     }
+// }
+
+.reg {
+    position: absolute;
+    z-index: 100000;
+    opacity: 0.8;
+    color: #fff;
+    display: flex;
+    // justify-content: space-between;
+    right: 47%;
+    border: 1px solid #2b2b3f;
+    // text-align: center;
+    margin: 10px;
+    background: rgb(13, 211, 72);
+    padding: 8px 16px;
+    border-radius: 15px;
+}

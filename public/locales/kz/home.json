@@ -1,0 +1,21 @@
+{
+    "Responsibles": "Жауаптылар",
+    "Deadline": "Мерзімі",
+    "Create project": "Жоба құру",
+    "Create task": "Тапсырма құру",
+    "Enter the title": "Тақырыпты енгізіңіз",
+    "Description": "Сипаттама",
+    "Start date": "Басталатын күн",
+    "End date": "Мерзімнің өту күні",
+    "Choose someone responsible": "Жауапты адамды таңдаңыз",
+    "Create": "Жасау",
+    "Create new Project": "Жаңа жоба жасаңыз",
+    "Create new Task": "Жаңа тапсырма жасаңыз",
+    "No tasks": "Тапсырмалар жоқ",
+    "Time left": "Уақыт",
+    "Priority": "Басымдық",
+    "Complexity": "Күрделілігі",
+    "Change": "Өзгерту",
+    "Open": "Ашу",
+    "Project": "Жоба"
+}
